@@ -1,0 +1,71 @@
+﻿@model IEnumerable<BookStore.Models.Book>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="row pt-4">
+    <div class="col-6">
+        <h1>List of Books</h1>
+    </div>
+
+    <div class="col-6 text-right">
+        <p>
+            <a class="btn btn-primary" w-100 asp-action="Create">
+                <i class="fas fa-plus"></i> &nbsp;  Add New Book
+            </a>
+        </p>
+    </div>
+</div>
+
+<table class="table table-bordered table-striped" style="width:100%">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Author.FullName)
+            </th>
+            <td></td>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Author.FullName)
+            </td>
+            <td>
+                <a asp-controller="Book" asp-route-Id="@item.Id" asp-action="Edit" class="btn btn-primary">
+                    <i class="fas fa-marker"></i>
+                </a>
+                <a asp-controller="Book" asp-route-Id="@item.Id" asp-action="Details" class="btn btn-info">
+                    <i class="fas fa-info"></i>
+                </a>
+                <a asp-controller="Book" asp-route-Id="@item.Id" asp-action="Delete" class="btn btn-danger">
+                    <i class="fas fa-trash-alt"></i>
+                </a>
+                @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

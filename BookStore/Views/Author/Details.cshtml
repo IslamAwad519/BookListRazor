@@ -1,0 +1,35 @@
+﻿@model BookStore.Models.Author
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Author Details</h1>
+
+
+
+    <hr />
+        <dl class="row">
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.Id)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.Id)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.FullName)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.FullName)
+            </dd>
+        </dl>
+
+<div>
+
+    <a asp-action="Edit" class="btn btn-info" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index" class="btn btn-primary">
+        Back
+        <i class="fas fa-sign-out-alt"></i>
+    </a>
+
+</div>
